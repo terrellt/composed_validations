@@ -29,6 +29,7 @@ RSpec.describe "Validations Integration Spec" do
   after do
     Object.send(:remove_const, :MyObject)
     Object.send(:remove_const, :ValueIsFrank)
+    Object.send(:remove_const, :LengthIsFive)
   end
   let(:my_object) { MyObject.new }
   let(:validation_map) do
