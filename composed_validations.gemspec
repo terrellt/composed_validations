@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'composed_validations/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "Composed Validations"
+  spec.name          = "composed_validations"
   spec.version       = ComposedValidations::VERSION
   spec.authors       = ["Trey Terrell"]
   spec.email         = ["trey.terrell@oregonstate.edu"]
