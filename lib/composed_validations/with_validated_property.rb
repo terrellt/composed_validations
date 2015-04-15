@@ -3,14 +3,14 @@ module ComposedValidations
     attr_reader :property, :validator
     def initialize(resource, property, validator)
       super(resource)
-      @property = property
+      @property = ComposedValidations::ValidatedProperty(property)
       @validator = validator
     end
 
     def valid?(*args)
       __getobj__.valid?(*args)
       unless validator.valid?(result)
-        errors.add(property, validator.message)
+        errors.add(property.validated_property, validator.message)
       end
       errors.blank?
     end
@@ -23,7 +23,7 @@ module ComposedValidations
     private
 
     def result
-      __send__(property)
+      __send__(property.property_accessor)
     end
   end
 end

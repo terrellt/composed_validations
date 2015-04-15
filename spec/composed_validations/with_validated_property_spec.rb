@@ -37,6 +37,17 @@ RSpec.describe ComposedValidations::WithValidatedProperty do
         expect(valid_result).to eq true
       end
     end
+    context "when passing in a ValidatedProperty" do
+      let(:property) { ComposedValidations::ValidatedProperty.new(:title, :title_ids) }
+      let(:asset) { double("Object", :title_ids => result) }
+      context "when validator returns false" do
+        let(:valid) { false }
+        it "should access one way and add a message for another property" do
+          expect(asset).to have_received(:title_ids)
+          expect(errors).to have_received(:add).with(:title, "is so awful")
+        end
+      end
+    end
     context "when validator returns false" do
       let(:valid) { false }
       it "should add an error" do

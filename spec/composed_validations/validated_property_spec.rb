@@ -23,7 +23,7 @@ RSpec.describe ComposedValidations::ValidatedProperty do
       end
     end
     context "when given a validated property" do
-      let(:value) { ValidatedProperty.new(:test, :test2) }
+      let(:value) { described_class.new(:test, :test2) }
       it "should return it back" do
         expect(subject).to eq value
       end
