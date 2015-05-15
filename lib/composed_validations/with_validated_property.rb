@@ -7,6 +7,10 @@ module ComposedValidations
       @validator = validator
     end
 
+    def class
+      __getobj__.class
+    end
+
     def valid?(*args)
       __getobj__.valid?(*args)
       unless validator.valid?(result)

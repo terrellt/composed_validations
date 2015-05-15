@@ -19,6 +19,11 @@ RSpec.describe ComposedValidations::WithValidatedProperty do
     allow(validator).to receive(:message).and_return("is so awful")
   end
 
+  describe "#class" do
+    it "should delegate up" do
+      expect(subject.class).to eq asset.class
+    end
+  end
   describe "#valid?" do
     let(:valid) { true }
     let(:valid_result) { subject.valid? }
