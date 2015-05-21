@@ -10,7 +10,19 @@ module ComposedValidations
       property_mapper.to_a.map{|x| PropertyValidator.new(*x) }.each do |p|
         temp_resource = p.decorate_resource(temp_resource)
       end
-      temp_resource
+      Decorator.new(temp_resource, property_mapper)
+    end
+  end
+
+  class Decorator < SimpleDelegator
+    attr_reader :validators
+    def initialize(resource, validators)
+      @validators = validators
+      super(resource)
+    end
+
+    def class
+      __getobj__.class
     end
   end
 

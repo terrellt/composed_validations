@@ -24,6 +24,11 @@ RSpec.describe ComposedValidations::DecorateProperties do
       expect(ComposedValidations::WithValidatedProperty).to have_received(:new).with(resource, :title, validator)
       expect(ComposedValidations::WithValidatedProperty).to have_received(:new).with(result.__getobj__, :title, validator2)
     end
+    it "should respond to #validators" do
+      result = subject.run
+
+      expect(result.validators).to eq property_mapper
+    end
   end
 
   def fake_validator(result=true)
