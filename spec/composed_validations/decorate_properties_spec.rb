@@ -24,10 +24,15 @@ RSpec.describe ComposedValidations::DecorateProperties do
       expect(ComposedValidations::WithValidatedProperty).to have_received(:new).with(resource, :title, validator)
       expect(ComposedValidations::WithValidatedProperty).to have_received(:new).with(result.__getobj__, :title, validator2)
     end
-    it "should respond to #validators" do
-      result = subject.run
+  end
 
-      expect(result.validators).to eq property_mapper
+  describe "#validators" do
+    it "should give back the properties" do
+      expect(subject.run.validators).to eq property_mapper
+    end
+    it "should give back accessors as keys if given a ValidatedProperty" do
+      result = described_class.new(resource, {ComposedValidations::ValidatedProperty.new(:lcsubject, :lcsubject_ids) => validator}).run
+      expect(result.validators).to eq ({:lcsubject => [validator]})
     end
   end
 

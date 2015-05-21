@@ -7,7 +7,9 @@ module ComposedValidations
   autoload :DecorateProperties, "composed_validations/decorate_properties"
   autoload :PropertyValidator, "composed_validations/property_validator"
   autoload :OrValidator, "composed_validations/or_validator"
+  autoload :AndValidator, "composed_validations/and_validator"
   autoload :OrStringJoiner, "composed_validations/or_string_joiner"
+  autoload :AndStringJoiner, "composed_validations/and_string_joiner"
   autoload :ValidatedProperty, "composed_validations/validated_property"
 
   def ValidatedProperty(value)

@@ -15,10 +15,17 @@ module ComposedValidations
   end
 
   class Decorator < SimpleDelegator
-    attr_reader :validators
     def initialize(resource, validators)
       @validators = validators
       super(resource)
+    end
+
+    def validators
+      @validator_return ||= begin
+                              Hash[@validators.map do |property, validators|
+                                [property.to_sym, Array(validators)]
+                              end]
+                            end
     end
 
     def class

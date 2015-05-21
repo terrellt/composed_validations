@@ -13,6 +13,12 @@ RSpec.describe ComposedValidations::ValidatedProperty do
     end
   end
 
+  describe "#to_sym" do
+    it "should return the validated property" do
+      expect(subject.to_sym).to eq :validated_property
+    end
+  end
+
   describe "Caster" do
     subject { ComposedValidations::ValidatedProperty(value) }
     context "when given a string" do
