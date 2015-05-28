@@ -13,7 +13,7 @@ module ComposedValidations
 
     def valid?(*args)
       __getobj__.valid?(*args)
-      unless validator.valid?(result)
+      unless validator.valid_value?(result)
         errors.add(property.validated_property, validator.message)
       end
       errors.blank?

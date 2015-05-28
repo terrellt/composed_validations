@@ -5,9 +5,9 @@ module ComposedValidations
       @validators = Array(validators)
     end
 
-    def valid?(record)
+    def valid_value?(record)
       validators.all? do |validator|
-        validator.valid?(record)
+        validator.valid_value?(record)
       end
     end
 

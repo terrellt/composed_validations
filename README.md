@@ -42,12 +42,12 @@ end
 ### Validators
 
 Validators are objects which takes the result of using a property accessor and
-says whether or not it's valid. It responds to `valid?(value)` and `message`(the
+says whether or not it's valid. It responds to `valid_value?(value)` and `message`(the
 message which gets added to errors if this is not valid.)
 
 ```ruby
 class StringIsBob
-  def valid?(value)
+  def valid_value?(value)
     value.to_s == "Bob"
   end
 

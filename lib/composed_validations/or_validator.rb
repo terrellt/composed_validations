@@ -2,9 +2,9 @@ module ComposedValidations
   class OrValidator
     pattr_initialize :validators
 
-    def valid?(record)
+    def valid_value?(record)
       validators.any? do |validator|
-        validator.valid?(record)
+        validator.valid_value?(record)
       end
     end
 

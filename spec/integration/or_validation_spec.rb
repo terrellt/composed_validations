@@ -8,7 +8,7 @@ RSpec.describe "Or Validations Spec" do
       attr_accessor :title, :description
     end
     class ValueIsFrank
-      def valid?(value)
+      def valid_value?(value)
         value.to_s == "Frank"
       end
 
@@ -17,7 +17,7 @@ RSpec.describe "Or Validations Spec" do
       end
     end
     class LengthIsFour
-      def valid?(value)
+      def valid_value?(value)
         value.to_s.length == 4
       end
 

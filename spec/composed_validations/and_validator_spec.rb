@@ -8,7 +8,7 @@ RSpec.describe ComposedValidations::AndValidator do
 
   describe "#valid?" do
     let(:value) { double("value") }
-    let(:result) { subject.valid?(value) }
+    let(:result) { subject.valid_value?(value) }
     context "when both validators are valid" do
       it "should return true" do
         expect(result).to eq true
@@ -49,7 +49,7 @@ RSpec.describe ComposedValidations::AndValidator do
 
   def mock_validator(valid:)
     i = double("validator")
-    allow(i).to receive(:valid?).and_return(valid)
+    allow(i).to receive(:valid_value?).and_return(valid)
     allow(i).to receive(:message).and_return("message")
     i
   end

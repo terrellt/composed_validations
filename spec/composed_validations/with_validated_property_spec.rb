@@ -28,7 +28,7 @@ RSpec.describe ComposedValidations::WithValidatedProperty do
     let(:valid) { true }
     let(:valid_result) { subject.valid? }
     before do
-      allow(validator).to receive(:valid?).with(result).and_return(valid)
+      allow(validator).to receive(:valid_value?).with(result).and_return(valid)
       valid_result
     end
     it "should call asset.valid?" do

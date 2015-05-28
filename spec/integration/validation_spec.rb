@@ -8,7 +8,7 @@ RSpec.describe "Validations Integration Spec" do
       attr_accessor :title, :description
     end
     class ValueIsFrank
-      def valid?(value)
+      def valid_value?(value)
         value.to_s == "Frank"
       end
 
@@ -17,7 +17,7 @@ RSpec.describe "Validations Integration Spec" do
       end
     end
     class LengthIsFive
-      def valid?(value)
+      def valid_value?(value)
         value.to_s.length == 5
       end
 
